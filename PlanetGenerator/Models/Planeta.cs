@@ -13,9 +13,9 @@ namespace PlanetGenerator.Models
         {
             Pozice = new Souradnice(rnd);
             UID = id;
-            ExistujeZivot = rnd.Next(0, 2) == 0;
+            ExistujeZivot = rnd.Next(0, 5) == 0;
             VzdalenostOdZeme = rnd.Next();
-            generateName(rnd);
+            GenerateName(rnd);
         }
 
         public string Nazev { get; private set; }
@@ -24,7 +24,7 @@ namespace PlanetGenerator.Models
         public bool ExistujeZivot { get; private set; }
         public Souradnice Pozice { get; private set; }
 
-        void generateName(Random rnd)
+        void GenerateName(Random rnd)
         {
             string name = "";
             int cast1 = rnd.Next(2, 5);
@@ -34,6 +34,16 @@ namespace PlanetGenerator.Models
             }
             name += "-"+ rnd.Next(1000, 1000000);
             Nazev = name;
+        }
+
+        public void Vypis()
+        {
+            Console.WriteLine("Název: " + Nazev);
+            Console.WriteLine("UID: " + UID);
+            Console.WriteLine("Vzdálenost od Země: " + VzdalenostOdZeme + " KM");
+            Console.WriteLine("Existuje zde život: " + (ExistujeZivot?"Ano":"Ne"));
+            Console.WriteLine("Souřadnice: " + Pozice.GetPos());
+            Console.WriteLine("--------------------------------------------------");
         }
     }
 
@@ -49,5 +59,10 @@ namespace PlanetGenerator.Models
         public int X { get; private set; }
         public int Y { get; private set; }
         public int Z { get; private set; }
+
+        public string GetPos()
+        {
+            return "X" + X + " Y" + Y + " Z" + Z;
+        }
     }
 }
