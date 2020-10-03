@@ -66,7 +66,7 @@ namespace PlanetGenerator
             return seq.Where(e => Convert.ToInt32(e.Nazev.Split('-')[1]) == input).Take(count);
         }
 
-        public static IEnumerable<Planeta> VyhledatSouradnice(this IEnumerable<Planeta> seq, Souradnice cordinates, int tolerance)
+        public static Planeta VyhledatSouradnice(this IEnumerable<Planeta> seq, Souradnice cordinates, int tolerance)
         {
             return seq.Where(e =>
             e.Pozice.X > cordinates.X - tolerance &&
@@ -75,7 +75,7 @@ namespace PlanetGenerator
             e.Pozice.Y < cordinates.Y + tolerance &&
             e.Pozice.Z > cordinates.Z - tolerance &&
             e.Pozice.Z < cordinates.Z + tolerance
-            ).Take(1);
+            ).First();
         }
 
         public static Planeta VyhledatUID(this IEnumerable<Planeta> seq, int id)
