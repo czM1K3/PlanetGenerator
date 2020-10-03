@@ -26,7 +26,7 @@ namespace PlanetGenerator
             var sequenceVyhledatSoucastUID = sequenceRaw.VyhledatSoucastUID(123, 10000);
             var sequenceVyhledatLicheUID = sequenceRaw.VyhledatLicheUID(10);
 
-            foreach (var item in sequence10PlanetSZivotem)
+            foreach (var item in sequenceExistujeZivot)
             {
                 item.Vypis();
             }
